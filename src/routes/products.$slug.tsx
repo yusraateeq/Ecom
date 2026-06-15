@@ -84,7 +84,7 @@ function ProductDetail() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="flex flex-wrap gap-2">
-                {product.tags.map((t) => (
+                {product.tags.map((t: string) => (
                   <span
                     key={t}
                     className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs font-medium capitalize text-muted-foreground"
@@ -115,7 +115,7 @@ function ProductDetail() {
               </div>
 
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {product.features.map((f) => (
+                {product.features.map((f: string) => (
                   <li key={f} className="flex items-start gap-2 text-sm">
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/15 text-primary">
                       <Check className="h-3 w-3" />
