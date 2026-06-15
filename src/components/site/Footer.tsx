@@ -1,4 +1,4 @@
-import { Gift, Instagram, Facebook, Twitter } from "lucide-react";
+import { Gift, Camera, Globe, Send } from "lucide-react";
 
 export function Footer() {
   return (
@@ -16,7 +16,7 @@ export function Footer() {
           © {new Date().getFullYear()} Gifto Studio. Crafted with care.
         </p>
         <div className="flex items-center gap-3">
-          {[Instagram, Facebook, Twitter].map((Icon, i) => (
+          {[Camera, Globe, Send].map((Icon, i) => (
             <a
               key={i}
               href="#"
