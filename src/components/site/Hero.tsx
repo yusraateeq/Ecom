@@ -76,6 +76,9 @@ export function Hero() {
               alt="Custom printed mug, bottle, keychain, pen and award"
               width={1536}
               height={1024}
+              decoding="async"
+              // @ts-expect-error React 19 fetchpriority
+              fetchpriority="high"
               className="h-full w-full object-cover"
             />
           </div>

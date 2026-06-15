@@ -7,6 +7,7 @@ import { About } from "@/components/site/About";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { Loader } from "@/components/site/Loader";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,17 +23,20 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <main>
-        <Hero />
-        <Categories />
-        <Gallery />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <>
+      <Loader />
+      <div className="min-h-screen bg-background text-foreground">
+        <Nav />
+        <main>
+          <Hero />
+          <Categories />
+          <Gallery />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </>
   );
 }
