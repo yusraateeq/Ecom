@@ -1,25 +1,7 @@
 import { motion } from "framer-motion";
-import mug from "@/assets/g-mug.jpg";
-import bottle from "@/assets/g-bottle.jpg";
-import keychain from "@/assets/g-keychain.jpg";
-import pen from "@/assets/g-pen.jpg";
-import award from "@/assets/g-award.jpg";
-import tshirt from "@/assets/g-tshirt.jpg";
-import mobile from "@/assets/g-mobile.jpg";
-import corporate from "@/assets/g-corporate.jpg";
-import laser from "@/assets/g-laser.jpg";
-
-const items = [
-  { img: mug, name: "Customized Mugs", desc: "Ceramic, magic & enamel" },
-  { img: bottle, name: "Water Bottles", desc: "Steel, sipper & sport" },
-  { img: keychain, name: "Keychains", desc: "Metal, acrylic & wood" },
-  { img: pen, name: "Pens", desc: "Engraved & branded" },
-  { img: award, name: "Award Shields", desc: "Crystal, wood & acrylic" },
-  { img: tshirt, name: "T-Shirts", desc: "DTF, sublimation & embroidery" },
-  { img: mobile, name: "Mobile Covers", desc: "Hard & silicone prints" },
-  { img: corporate, name: "Corporate Gifts", desc: "Curated gift sets" },
-  { img: laser, name: "Laser Engraving", desc: "Wood, metal & leather" },
-];
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { products } from "@/lib/products";
 
 export function Categories() {
   return (
@@ -38,30 +20,47 @@ export function Categories() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it, i) => (
-            <motion.article
-              key={it.name}
+          {products.map((it, i) => (
+            <motion.div
+              key={it.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_oklch(0.78_0.13_80/0.3)]"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={it.img}
-                  alt={it.name}
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/90 to-transparent p-5 pt-16">
-                <h3 className="font-display text-xl font-semibold">{it.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{it.desc}</p>
-              </div>
-            </motion.article>
+              <Link
+                to="/products/$slug"
+                params={{ slug: it.slug }}
+                className="group relative block overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_oklch(0.78_0.13_80/0.3)]"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={it.img}
+                    alt={it.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={600}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/90 to-transparent p-5 pt-16">
+                  <div className="flex items-end justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-xl font-semibold">{it.name}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{it.desc}</p>
+                    </div>
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-background/70 text-primary transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
+                      <ArrowUpRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs font-semibold text-primary">
+                    From Rs. {it.priceFrom.toLocaleString()} {it.unit}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
