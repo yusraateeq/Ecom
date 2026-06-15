@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Menu, X, Gift } from "lucide-react";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#categories", label: "Categories" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#categories", label: "Categories" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -27,7 +27,7 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#home" className="flex items-center gap-2">
+        <a href="/#home" className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-lg btn-gold">
             <Gift className="h-5 w-5" />
           </span>
@@ -50,7 +50,7 @@ export function Nav() {
         </ul>
 
         <a
-          href="#contact"
+          href="/#contact"
           className="hidden rounded-full btn-gold btn-gold-hover px-5 py-2.5 text-sm font-semibold md:inline-block"
         >
           Get Quote
@@ -81,7 +81,7 @@ export function Nav() {
             ))}
             <li>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-full btn-gold px-4 py-2.5 text-center text-sm font-semibold"
               >
