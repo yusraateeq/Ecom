@@ -1,17 +1,8 @@
 {
   "version": 2,
-  "framework": "vite",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist/client" }
-    }
-  ],
+  "cleanUrls": true,
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
+    { "src": "/(.*)", "dest": "/dist/client/index.html" }
   ]
 }
