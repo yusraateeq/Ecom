@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "cleanUrls": true,
+  "builds": [
+    {
+      "src": "dist/server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
-    { "src": "/(.*)", "dest": "/dist/client/index.html" }
+    {
+      "src": "/_vercel/insights/(.*)",
+      "dest": "/_vercel/insights/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/server/server.js"
+    }
   ]
 }
