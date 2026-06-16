@@ -75,6 +75,10 @@
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 @utility text-gradient-gold {
   background: var(--grad-gold);
   -webkit-background-clip: text;
